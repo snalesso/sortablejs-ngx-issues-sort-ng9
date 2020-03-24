@@ -23,7 +23,7 @@
     <span>Click to select/deselect</span>
 </p>
 
-<div class="wrap-panel">
+<div>
     <button *ngFor="let item of items; let i = index;" [class.active]="item.isSelected" (click)="toggle(item)">{{item.label}}</button>
 </div>
 
@@ -33,7 +33,7 @@
     <span>Click to unselect, drag to sort</span>
 </p>
 
-<div class="wrap-panel" [sortablejs]="selectedItems" [sortablejsOptions]="selectedItemsOptions">
+<div [sortablejs]="selectedItems" [sortablejsOptions]="selectedItemsOptions">
     <button *ngFor="let item of selectedItems; let i = index;" [class.active]="item.isSelected" (click)="remove(item)">{{i + 1}}° {{item.label}}</button>
 </div>
 
@@ -45,26 +45,24 @@
             <li>
                 <span>Do one of these 2 things</span>
                 <ul>
-                    <li>Drag any selected item (<i>not the last</i>) to the last position</li>
-                    <li>Drag the last item to another position, then place it back at the end</li>
+                    <li>Drag any selected item (<i>but the last</i>) to the last position</li>
+                    <li>Drag the last item to another position, then place it back at the end of the list</li>
                 </ul>
             </li>
-            <li>Remove any item from the selected items list (by clicking it in any list)</li>
             <li>Add any item to the selected items list</li>
-            <li>Notice the selected items order went mad: numering reflects array indices, but items are shown in the wrong order</li>
+            <li>Notice the selected items order went mad: numbering reflects correct array indices, but items are shown in a wrong order</li>
         </ol>
     </span>
 </p>
 
 <p>
-    <b>Example test</b>
+    <b>Example</b>
     <br>
     <span>
         <ol>
-            <li>From the second list, drag <u>banana</u> (which is first) to the end of the list</li>
-            <li>Remove <u>banana</u> from selected items by clicking it on any list</li>
-            <li>Select <u>banana</u> again by clicking it in the first list</li>
-            <li>Notice the problem</li>
+            <li>In the selected items list move <u>banana</u> to the end of the list, after <u>Saruman</u></li>
+            <li>Add <u>dinosaur</u> to selected items by clicking it in the first list</li>
+            <li>Notice the issue: <u>dinosaur</u> has the right array index but is shown as first</li>
         </ol>
     </span>
 </p>
